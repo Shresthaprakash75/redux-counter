@@ -1,68 +1,55 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+How redux work : Counter example
+https://daveceddia.com/how-does-redux-work/
 
-## Available Scripts
+Not Pretty yet : Will add css when I have some free time
 
-In the project directory, you can run:
+Actions, reducers, action creators, middleware, pure functions, immutability…
+Project setup
+npx create-react-app project-name
+yarn add redux react-redux
 
-### `yarn start`
+....................................................
+Philosophy
+Redux keeps the state of your app in a single store.
+You can extract parts of that state and plug it in your components props
+(this lets you keep the data in one global place -the store & feed it directly to any component in the app)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+state is the data
+store is where the state is kept
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+redux vs react-redux
+redux gives you a store, and lets you keep state on it, and get state out and respond when the state changes. That's it.
+react-redux lets you connect the pieces of the state to React Components.
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+.............................................
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Steps
+1: Plain old React State
+- count state is stored in the top level of Counter Component 
+- when user clicks '+', onClick handler is called, which is bound to increment function 
+- increment function updates the state with the new count
+- state gets changed, react re-renders the counter component, new value is displayed
+similarly with - button same thing like above but opposite
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+2: Add Redux piece by piece
+2.1 Imagine we've moved the components state to Redux
+therefore, we should remove the state from the component. since we are getting them from redux soon.
+{this.state.count} will be changed to {this.props.count}
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2.2 Connecting Component to redux 
+we need to import connect function from react-redux
 
-### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Learn More
+what does redux do? When should u use it?
+https://daveceddia.com/what-does-redux-do/
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Visual Guide: How react state works?
+https://daveceddia.com/visual-guide-to-state-in-react/
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Keeping up to date with JS world
+https://daveceddia.com/keeping-up-with-javascript/
