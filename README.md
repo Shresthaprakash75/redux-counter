@@ -10,6 +10,8 @@ yarn add redux react-redux
 
 ....................................................
 Philosophy
+dispatch(action) -> reducer -> new state -> re-render
+
 Redux keeps the state of your app in a single store.
 You can extract parts of that state and plug it in your components props
 (this lets you keep the data in one global place -the store & feed it directly to any component in the app)
@@ -94,9 +96,52 @@ function reducer(state = initialState, action){
 }
 
 2.7.3 action 
+<!-- respond to action -->
+function reducer(state = initialState, action) {
+  if(action.type === "INCREMENT") {
+    return {
+      count: state.count + 1
+    };
+  }
+
+  return state;
+}
+<!-- or -->
+function reducer(state = initialState, action) {
+  switch(action.type) {
+    case 'INCREMENT':
+      return {
+        count: state.count + 1
+      };
+    case 'DECREMENT':
+      return {
+        count: state.count - 1
+      };
+    default:
+      return state;
+  }
+}
 <!-- object needs to have type property 
     and it's value should be a string
+    {
+        type: "INCREMENT"
+    }
+    {
+        type: "DECREMENT"
+    }
 -->
+
+2.7.4 Feed and action to reducer -Counter.js
+increment = () => {
+    this.props.dispatch({ type: 'INCREMENT' });
+  }
+
+  decrement = () => {
+    this.props.dispatch({ type: 'DECREMENT' });
+  }
+<!-- actions are not born
+    they are dispatched
+ -->
 
 
 
