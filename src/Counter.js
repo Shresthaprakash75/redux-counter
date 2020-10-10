@@ -1,9 +1,7 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 class Counter extends React.Component {
-  state = { count: 0 }
-
   increment = () => {
     this.props.dispatch({ type: 'INCREMENT' });
   }
@@ -26,11 +24,10 @@ class Counter extends React.Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    count: state.count
+  };
+}
 
-// transforms the Redux state into an object containing props
-const mapStateToProps = (state) => ({
-  count: state.count
-});
-
-// connect the redux store with Counter component 
 export default connect(mapStateToProps)(Counter);
